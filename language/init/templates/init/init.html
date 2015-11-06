@@ -26,16 +26,15 @@
 <p><b> 程式類別：</b></p>
 <ul>
 {% for category in categories %}
- <li>{{category.name}}(瀏覽：{{category.views}}, 讚：{{category.likes}})</li>
+	<li>{{category.name}}(瀏覽：{{category.views}}, 讚：{{category.likes}})</li>
 {% endfor %}
 </ul>
 <p><b>頁面：</b></p>
 <table>
- <tr><th>標題</th><th>所屬類別</th><th>網址</th></tr>
- {% for page in pages %}
- <tr><td>{{page.title}}</td><td>{{page.category.name}}</td><td>{{page.url}}</t
-d></tr>
- {% endfor %}
+	<tr><th>標題</th><th>所屬類別</th><th>網址</th><th>瀏覽次數</th></tr>
+	{% for page in pages %}
+ 		<tr><td>{{page.title}}</td><td>{{page.category.name}}</td><td>{{page.url}}</td><td>{{page.views}}</td></tr>
+	{% endfor %}
 </table>
 <br>
 <p><a href="{% url 'main:main' %}">回首頁</a></p>
