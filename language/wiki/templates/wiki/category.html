@@ -10,9 +10,12 @@
 {% if category %}
  <h1>{{category.name}}</h1>
  {% if pages %}
- <ul>
+ <table>
+ <tr><th>頁面標題</th></tr>
  {% for page in pages %}
- <li><a href={{page.url}}>{{page.title}}</a></li>
+ <table> 
+ <td><a href={{page.url}}>{{page.title}}</a></td>
+ </table>
  {% endfor %}
  </ul>
  {% else %}
@@ -20,6 +23,6 @@
  {% endif %}
 {% else %}
  <p>所指定的類別「{{categoryName}}」不存在。</p>
-{% endif %}
+ {% endif %}
 </body>
-</html
+</html>

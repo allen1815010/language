@@ -12,13 +12,12 @@ def about(request):
     context = {}
     return render(request, 'wiki/about.html', context)
 
-def category(request, categoryNameSlug):
+def category(request, categoryName):
     context = {}
     try:
-        category = Category.objects.get(slug=categoryNameSlug)
+        category = Category.objects.get(name=categoryName)
         context['category'] = category
-        pages = Page.objects.filter(category=category)
-        context['pages'] = pages
+        context['pages'] = Page.objects.filter(category=category)
     except Category.DoesNotExist:
-        pass
+            pass
     return render(request, 'wiki/category.html', context)
