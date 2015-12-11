@@ -8,7 +8,7 @@
 </head>
 <body>
 {% if category %}
- <h1>{{category.name}}</h1>
+ <h1>{{category.id}}</h1>
  {% if pages %}
  <table>
  <tr><th>頁面標題</th></tr>
@@ -32,9 +32,9 @@
  {% else %}
  <p><strong>此類別目前並無頁面。</strong></p>
  {% endif %}
- <p><a href={% url 'wiki:addPage' category.name %}>新增頁面</a></p>
+ <p><a href={% url 'wiki:addPage' category.id %}>新增頁面</a></p>
 {% else %}
- <p>所指定的類別「{{categoryName}}」不存在。</p>
+ <p>所指定的類別「{{category.id}}」不存在。</p>
  {% endif %}
 </body>
 </html>
