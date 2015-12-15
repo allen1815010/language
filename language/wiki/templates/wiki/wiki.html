@@ -2,20 +2,22 @@
 {% load staticfiles %}
 <html>
 <head>
-<title>程式語言小百科</title>
+<title>10314018</title>
 <meta charset=utf-8>
 <link rel=stylesheet href="{% static 'main/css/main.css' %}">
 </head>
 <body>
-<h1>Wiki說--Hello world!</h1>
+<h1>歡迎來到選課系統</h1>
 <br>
 {% if categories %}
- <h2>程式語言分類：</h2>
+ <h2>課程分類：</h2>
  <table>
  <tr><th>分類名稱</th><th><th></th></th></tr>
  {% for category in categories %}
  <tr>
+ 
  <td>
+
  <a href={% url 'wiki:category' category.id %}>{{category.name}}</a>
  </td>
  <td>
@@ -33,10 +35,9 @@
  {% endfor %}
  </table>
 {% else %}
-  <p><strong>目前尚未設定程式語言類別。</strong></p>
+  <p><strong>目前還無課程。</strong></p>
 {% endif %}
-<p><a href={% url 'wiki:addCategory' %}>新增類別</a></p>
-<p><a href={% url 'wiki:addCategory' %}>新增程式語言分類</a></p>
+<p><a href={% url 'wiki:addCategory' %}>新增課程</a></p>
 <p><a href={% url 'main:main' %}>回首頁</a></p>
 <!--  <img src={% static 'wiki/img/proglang.png' %} alt=程式語言影像> -->
 </body>

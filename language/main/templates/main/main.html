@@ -2,17 +2,16 @@
 {% load staticfiles %}
 <html>
 <head>
-<title>程式語言小百科</title>
+<title>10314018</title>
 <meta charset=utf-8>
 <link rel=stylesheet href={% static 'main/css/main.css' %}>
 </head>
 <body>
-<h1>Django說--Hello world!</h1>
-<p>{{message}}</p>
-<p>現在時間：<span style=color:red;>{{time}}</span></p>
-<a href={% url 'wiki:about' %}>關於程式語言小百科</a><br>
-<a href={% url 'wiki:wiki' %}>前往Wiki頁面</a> <br>
+<h1>歡迎光臨選課系統</h1>
 
+<a href={% url 'wiki:about' %}></a><br>
+<a href={% url 'wiki:wiki' %}>前往選課系統頁面</a> <br>
+<a href={% url 'init:init' %}>前往課程介紹</a> <br>
 
 
 
