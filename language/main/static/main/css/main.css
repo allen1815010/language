@@ -5,3 +5,9 @@ img {
 	width:200px ;
 	height:200px;
 }
+.success {
+ color: blue;
+}
+.error {
+ color: red;
+}

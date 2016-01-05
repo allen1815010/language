@@ -8,12 +8,21 @@
 </head>
 <body>
 <h1>歡迎光臨選課系統</h1>
-
+<p>{{like}}</p>
+{% if messages %}
+ {% for message in messages %}
+ <p {% if message.tags %} class={{message.tags}} {% endif %}>{{message}}</p>
+ {% endfor %}
+{% endif %}
+<br>
 <a href={% url 'wiki:about' %}></a><br>
-<a href={% url 'wiki:wiki' %}>前往選課系統頁面</a> <br>
 <a href={% url 'init:init' %}>前往課程介紹</a> <br>
-
-
-
+<a href={% url 'wiki:wiki' %}>前往選課系統頁面</a> <br>
+{% if user.is_authenticated %}
+	<p><a href={% url 'account:userLogout' %}>登出 ({{user.username}})</a></p>
+{% else %}
+ 	<p><a href={% url 'account:register' %}>註冊</a></p>
+ 	<p><a href={% url 'account:userLogin' %}>登入</a></p>
+{% endif %}
 </body>
 </html>

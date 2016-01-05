@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from wiki.forms import CategoryForm, PageForm
 from django.core.urlresolvers import reverse
 from wiki.models import Category, Page
+from django.contrib.auth.decorators import login_required 
 
 def wiki(request):
     categories = Category.objects.order_by('-likes')
@@ -22,7 +23,7 @@ def category(request, categoryID):
     except Category.DoesNotExist:
             pass
     return render(request, 'wiki/category.html', context)
-
+@login_required
 def addCategory(request):
     template = 'wiki/addCategory.html'
     if request.method=='GET':
@@ -34,7 +35,7 @@ def addCategory(request):
     form.save()
     return redirect(reverse('wiki:wiki'))
     # Or try this: return wiki(request) 
-
+@login_required
 def addPage(request, categoryID):
     template = 'wiki/addPage.html'
     try:
@@ -55,7 +56,7 @@ def addPage(request, categoryID):
     page.save()
     return redirect(reverse('wiki:category', args=(categoryID, )))
 
-    
+@login_required
 def deleteCategory(request, categoryID):
     if request.method!='POST':
         return wiki(request)
@@ -65,7 +66,7 @@ def deleteCategory(request, categoryID):
         categoryToDelete.delete()
         return redirect(reverse('wiki:wiki'))
 
-    
+@login_required
 def deletePage(request, pageID):
     if request.method!='POST':
         return wiki(request)
@@ -78,7 +79,7 @@ def deletePage(request, pageID):
         categoryID = ''
     return redirect(reverse('wiki:category', args=(categoryID, )))
     
-    
+@login_required
 def updateCategory(request, categoryID):
     template = 'wiki/updateCategory.html'
     try:
@@ -94,7 +95,8 @@ def updateCategory(request, categoryID):
         return render(request, template, {'form':form, 'category':category})
     category.save()
     return redirect(reverse('wiki:wiki'))
-    
+
+@login_required
 def updatePage(request, pageID):
     template = 'wiki/updatePage.html'
     try:
